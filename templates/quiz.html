@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+      <ol>
+        {% for question in questions %}
+        <form action="" method="">
+        <li>{{question.question}}</li>
+        <label>
+        <input type="radio" name="option" id="1" value="{{question.option_one}}">{{question.option_one}}
+        </label> <br>
+        <label>
+        <input type="radio" name="option" id="2" value="{{question.option_two}}">{{question.option_two}}
+        </label> <br>
+        <label>
+        <input type="radio" name="option" id="3" value="{{question.option_three}}">{{question.option_three}}
+        </label> <br>
+        <label>
+        <input type="radio" name="option" id="4" value="{{question.option_four}}">{{question.option_four}}
+        </label>
+        {{question.answer}}
+        <input type="submit" value="Check">
+        </form>
+        {% endfor %}
+      </ol>
+    </div>
+
+{% endblock content %}
