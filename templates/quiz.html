@@ -1,29 +1,68 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <div>
-      <ol>
-        {% for question in questions %}
-        <form action="" method="">
-        <li>{{question.question}}</li>
-        <label>
-        <input type="radio" name="option" id="1" value="{{question.option_one}}">{{question.option_one}}
-        </label> <br>
-        <label>
-        <input type="radio" name="option" id="2" value="{{question.option_two}}">{{question.option_two}}
-        </label> <br>
-        <label>
-        <input type="radio" name="option" id="3" value="{{question.option_three}}">{{question.option_three}}
-        </label> <br>
-        <label>
-        <input type="radio" name="option" id="4" value="{{question.option_four}}">{{question.option_four}}
-        </label>
-        {{question.answer}}
-        <input type="submit" value="Check">
-        </form>
-        {% endfor %}
-      </ol>
-    </div>
+  {% for question in page_obj %}
+  <p>{{question.question}}</p>
+  <form action="">
+    <table>
+      <tbody>
+        <tr>
+          <label>
+            <input type="radio" name="option" value="{{question.option_one}}" />
+            {{question.option_one}}
+          </label>
+        </tr>
+        <br />
+        <tr>
+          <label>
+            <input type="radio" name="option" value="{{question.option_two}}" />
+            {{question.option_two}}
+          </label>
+        </tr>
+        <br />
+        <tr>
+          <label>
+            <input
+              type="radio"
+              name="option"
+              value="{{question.option_three}}"
+            />
+            {{question.option_three}}
+          </label>
+        </tr>
+        <br />
+        <tr>
+          <label>
+            <input
+              type="radio"
+              name="option"
+              value="{{question.option_four}}"
+            />
+            {{question.option_four}}
+          </label>
+        </tr>
+      </tbody>
+    </table>
+    <input type="submit" value="Check" />
+  </form>
+  {% endfor %}
+</div>
+<div class="">
+  Question {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+</div>
+
+<ul class="pagination align-right mr-auto">
+  {% if page_obj.has_previous %}
+  <li class="page-item">
+    <a class="page-link" href="?page={{ page_obj.previous_page_number }}"
+      >Previous</a
+    >
+  </li>
+  {% endif %} {% if page_obj.has_next %}
+  <li class="page-item">
+    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+  </li>
+  {% endif %}
+</ul>
 
 {% endblock content %}
