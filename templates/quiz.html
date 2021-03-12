@@ -9,14 +9,14 @@
       <tbody>
         <tr>
           <label>
-            <input type="radio" name="option" value="{{question.option_one}}" />
+            <input type="radio" name="option" id="option_one" value="{{question.option_one}}" />
             {{question.option_one}}
           </label>
         </tr>
         <br />
         <tr>
           <label>
-            <input type="radio" name="option" value="{{question.option_two}}" />
+            <input type="radio" name="option" id="option_two" value="{{question.option_two}}" />
             {{question.option_two}}
           </label>
         </tr>
@@ -26,6 +26,7 @@
             <input
               type="radio"
               name="option"
+              id="option_three"
               value="{{question.option_three}}"
             />
             {{question.option_three}}
@@ -37,6 +38,7 @@
             <input
               type="radio"
               name="option"
+              id="option_four"
               value="{{question.option_four}}"
             />
             {{question.option_four}}
@@ -44,11 +46,15 @@
         </tr>
       </tbody>
     </table>
-    <input type="submit" value="Check" />
+    
+    <input type="submit" value="Check" id="check" onclick="displayRadioValue()" />
   </form>
-
+<input type="hidden" name="answerLabel" id="answerLabel" value="{{question.answer}}">
   {% endfor %}
-  <div>{% include 'messages.html' %}</div>
+  <div id = "result_div">
+  
+  </div>
+  {% comment %} <div>{% include 'messages.html' %}</div> {% endcomment %}
 
   {% comment %} {{values.option}} {% if {{values.option}}.exist %}
   <p>Correct</p>

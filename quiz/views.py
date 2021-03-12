@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from .models import Category, Question
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.core.paginator import Paginator
-
+from django.urls import reverse_lazy
+import json
 # Create your views here.
 
 
@@ -19,17 +20,28 @@ def take_quiz(request, pk):
     page_number = request.GET.get('page')
     page_obj = Paginator.get_page(paginator, page_number)
     context = {'questions': questions, 'page_obj': page_obj,}
+
     if request.method == 'GET':
+        request.session['previous_page'] = request.path_info + "?page=" + request.GET.get("page", '1')
+        
         return render(request, 'quiz.html', context)
     
     if request.method == 'POST':
+
         answers = []
         for i in questions:
             answers.append(i.answer)
         user_answer = request.POST['option']
+        print('user answer: ', user_answer)
         if user_answer in answers:
             messages.success(request, 'Correct answer')
+            return HttpResponseRedirect(request.session['previous_page'])
+            # url = reverse_lazy(f"{pk}/?page={page_number}") 
+            # return redirect(url)
         else:
             messages.warning(request, 'Wrong answer')
-        return render(request, 'quiz.html', context)
+            return HttpResponseRedirect(request.session['previous_page'])
+            # url = reverse_lazy("index_page") + "?page=" + page_number
+            # return redirect(url)
+        # return render(request, 'quiz.html', context)
 
