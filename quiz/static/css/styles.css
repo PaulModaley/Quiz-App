@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 * {
     margin: 0;
@@ -84,12 +84,12 @@ body {
 .btn-primary {
     background-color: #555;
     color: #ddd;
-    border: 1px solid #ddd
+    border: 1px solid #ddd;
 }
 
 .btn-primary:hover {
-    background-color: #21bf73;
-    border: 1px solid #21bf73
+    background-color: #64b4e9;
+    border: 1px solid #64b4e9
 }
 
 .btn-success {
@@ -97,9 +97,18 @@ body {
     background-color: #21bf73
 }
 
+.wrapper {
+    margin-left: auto;
+}
+
+.check-button {
+    position: relative;
+}
+
+
 @media(max-width:576px) {
     .question {
         width: 100%;
         word-spacing: 2px
     }
-} */
+}

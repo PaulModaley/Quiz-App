@@ -1,6 +1,5 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 <div>
-  {% comment %} {% include 'messages.html' %} {% endcomment %}
 {% for question in page_obj %}
   <p>{{question.question}}</p>
   <form action="." method="post">
@@ -46,7 +45,6 @@
         </tr>
       </tbody>
     </table>
-    
     <input type="submit" value="Check" id="check" onclick="displayRadioValue()" />
   </form>
 <input type="hidden" name="answerLabel" id="answerLabel" value="{{question.answer}}">
@@ -54,6 +52,14 @@
   <div id = "result_div">
   
   </div>
+  <label for="">Time Taken: 
+  
+  
+  <input type="text" readonly="" id="timespent" value="0:00">
+  
+  
+  </label>
+
   {% comment %} <div>{% include 'messages.html' %}</div> {% endcomment %}
 
   {% comment %} {{values.option}} {% if {{values.option}}.exist %}
@@ -73,13 +79,50 @@
       </li>
       {% endif %} {% if page_obj.has_next %}
       <li class="page-item">
-        <a class="page-link" href="?page={{ page_obj.next_page_number }}"
+        <a id="next-btn" class="page-link" href="?page={{ page_obj.next_page_number }}"
           >Next</a
         >
       </li>
       {% endif %}
+      <li class="page-item">
+      <a href="{% url 'result_page' %}" class="btn btn-danger" id="finish-btn" onclick="endQuizTime()">Finish</a>
+      </li>
     </ol>
   </div>
 </div>
 
+
 {% endblock content %}
+
+
+
+
+
+
+
+
+{% comment %} {% for question in page_obj %}
+<form action="." method="post">
+{% csrf_token %}
+<div class="container mt-sm-5 my-1">
+    <div class="question ml-sm-5 pl-sm-5 pt-2">
+        <div class="py-2 h5"><b>Q. {{question.question}} </b></div>
+        <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options"> 
+        <label class="options">{{question.option_one}} <input type="radio" name="option" id="option_one"> 
+        <span class="checkmark"></span> </label> 
+        <label class="options">{{question.option_two}} <input type="radio" name="option" id="option_two">
+        <span class="checkmark"></span> </label>
+        <label class="options">{{question.option_three}} <input type="radio" name="option" id="option_three"> 
+        <span class="checkmark"></span> </label> 
+        <label class="options">{{question.option_four}} <input type="radio" name="option" id="option_four"> 
+        <span class="checkmark"></span> </label> 
+        </div>
+    </div>
+{% endfor %}
+    <div class="d-flex align-items-center pt-3">
+        <div id="prev" class="wrapper"> <button class="btn btn-primary check-button">Check</button> </div>
+        <div class="ml-auto mr-sm-5"> <button class="btn btn-success">Next</button> </div>
+    </div>
+</div>
+
+</form>  {% endcomment %}

@@ -15,7 +15,7 @@ def index_page(request):
 
 
 def take_quiz(request, pk):
-    questions = Question.objects.filter(choice=pk)
+    questions = Question.objects.filter(choice=pk).order_by('-created_at')
     paginator = Paginator(questions,1)
     page_number = request.GET.get('page')
     page_obj = Paginator.get_page(paginator, page_number)
@@ -23,25 +23,23 @@ def take_quiz(request, pk):
 
     if request.method == 'GET':
         request.session['previous_page'] = request.path_info + "?page=" + request.GET.get("page", '1')
-        
         return render(request, 'quiz.html', context)
     
     if request.method == 'POST':
-
         answers = []
         for i in questions:
             answers.append(i.answer)
+        print(answers)
         user_answer = request.POST['option']
         print('user answer: ', user_answer)
         if user_answer in answers:
             messages.success(request, 'Correct answer')
             return HttpResponseRedirect(request.session['previous_page'])
-            # url = reverse_lazy(f"{pk}/?page={page_number}") 
-            # return redirect(url)
         else:
             messages.warning(request, 'Wrong answer')
             return HttpResponseRedirect(request.session['previous_page'])
-            # url = reverse_lazy("index_page") + "?page=" + page_number
-            # return redirect(url)
         # return render(request, 'quiz.html', context)
+
+def result_page(request):
+    return render(request, 'result.html')
 
