@@ -1,95 +1,72 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
-<div>
+  <div class="time-container">
+  <h5 class="time-title">Time Taken </h5>
+  
+  <input type="text" readonly id="timespent" value="0:00">
+
+  </div>
+<div class="container">
 {% for question in page_obj %}
-  <p>{{question.question}}</p>
-  <form action="." method="post">
-    {% csrf_token %}
-    <table>
-      <tbody>
-        <tr>
-          <label>
-            <input type="radio" name="option" id="option_one" value="{{question.option_one}}" />
-            {{question.option_one}}
-          </label>
-        </tr>
-        <br />
-        <tr>
-          <label>
-            <input type="radio" name="option" id="option_two" value="{{question.option_two}}" />
-            {{question.option_two}}
-          </label>
-        </tr>
-        <br />
-        <tr>
-          <label>
-            <input
-              type="radio"
-              name="option"
-              id="option_three"
-              value="{{question.option_three}}"
-            />
-            {{question.option_three}}
-          </label>
-        </tr>
-        <br />
-        <tr>
-          <label>
-            <input
-              type="radio"
-              name="option"
-              id="option_four"
-              value="{{question.option_four}}"
-            />
-            {{question.option_four}}
-          </label>
-        </tr>
-      </tbody>
-    </table>
-    <input type="submit" value="Check" id="check" onclick="displayRadioValue()" />
-  </form>
-<input type="hidden" name="answerLabel" id="answerLabel" value="{{question.answer}}">
-  {% endfor %}
-  <div id = "result_div">
+<form action="" method="post">
+{% csrf_token %}
+  <p>Q. {{question.question}}</p>
+  <div class="form-check">
+  <input class="form-check-input" type="radio" name="option" id="option_one" value="{{question.option_one}}">
+    {{question.option_one}}
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="option" id="option_two" value="{{question.option_two}}">
+    {{question.option_two}}
+  </label>
+</div>
+<div class="form-check disabled">
+  <input class="form-check-input" type="radio" name="option" id="option_three" value="{{question.option_three}}">
+    {{question.option_three}}
+  </label>
+</div>
+<div class="form-check disabled">
+  <input class="form-check-input" type="radio" name="option" id="option_four" value="{{question.option_four}}">
+    {{question.option_four}}
+  </label>
+</div>
+  <input type="hidden" name="answerLabel" id="answerLabel" value="{{question.answer}}">
+  <input class="btn btn-primary check-btn" type="submit" value="Check" id="check" onclick="displayRadioValue()" />
+</form>
+</div>
+  <div class="container" id = "result_div">
   
   </div>
-  <label for="">Time Taken: 
-  
-  
-  <input type="text" readonly="" id="timespent" value="0:00">
-  
-  
-  </label>
+{% endfor %}
 
-  {% comment %} <div>{% include 'messages.html' %}</div> {% endcomment %}
-
-  {% comment %} {{values.option}} {% if {{values.option}}.exist %}
-  <p>Correct</p>
-  {% else %}
-  <p>Wrong, Correct answer: {{question.answer}}</p>
-  {% endif %} {% endcomment %}
-
-  <div class="">
-    Question {{page_obj.number}} of {{page_obj.paginator.num_pages}}
-    <ol class="pagination align-right mr-auto">
+    <div class="container">
+    {% comment %} <ol class="pagination align-right mr-auto">
       {% if page_obj.has_previous %}
       <li class="page-item">
         <a class="page-link" href="?page={{ page_obj.previous_page_number }}"
           >Previous</a
         >
       </li>
-      {% endif %} {% if page_obj.has_next %}
-      <li class="page-item">
-        <a id="next-btn" class="page-link" href="?page={{ page_obj.next_page_number }}"
-          >Next</a
-        >
-      </li>
-      {% endif %}
-      <li class="page-item">
-      <a href="{% url 'result_page' %}" class="btn btn-danger" id="finish-btn" onclick="endQuizTime()">Finish</a>
-      </li>
-    </ol>
+      {% endif %}   {% endcomment %}
+      <div class="pagination-btns">
+        <ol class="pagination align-right mr-auto">
+        {% if page_obj.has_next %}
+          <li class="page-item">
+            <a id="next-btn" class="page-link btn btn-success" href="?page={{ page_obj.next_page_number }}"
+              >Next</a
+            >
+          </li>
+          {% endif %}
+            <li class="page-item">
+              <a href="{% url 'result_page' %}" class="btn btn-danger" id="finish-btn" onclick="endQuizTime()">Finish</a>
+            </li>
+        </ol>
+    Question {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+    </div>
   </div>
-</div>
+
+
+
 
 
 {% endblock content %}

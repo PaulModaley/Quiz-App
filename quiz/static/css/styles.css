@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 * {
     margin: 0;
@@ -102,7 +102,7 @@ body {
 }
 
 .check-button {
-    position: relative;
+    position: absolute;
 }
 
 
@@ -111,4 +111,22 @@ body {
         width: 100%;
         word-spacing: 2px
     }
+} */
+
+.time-container {
+    font-family: "Segoe UI",Arial,sans-serif;
+    text-align: right;
+    border: 0px none;
+}
+
+.time-title{
+    margin-right: 5rem;
+}
+
+.check-btn{
+    margin-top: 40px;
+}
+
+.pagination-btns{
+    margin-top: 20px;
 }
