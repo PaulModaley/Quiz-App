@@ -114,19 +114,34 @@ body {
 } */
 
 .time-container {
-    font-family: "Segoe UI",Arial,sans-serif;
-    text-align: right;
-    border: 0px none;
+  font-family: "Segoe UI", Arial, sans-serif;
+  text-align: right;
+  border: 0px none;
 }
 
-.time-title{
-    margin-right: 5rem;
+.time-title {
+  margin-right: 5rem;
 }
 
-.check-btn{
-    margin-top: 40px;
+.check-btn {
+  margin-top: 10px;
 }
 
-.pagination-btns{
-    margin-top: 20px;
+.pagination-btns {
+  margin-top: 20px;
+}
+
+.lower-radio {
+  margin-bottom: 10px;
+}
+
+.welcome {
+  margin-top: 30px;
+}
+
+.quizresults {
+  margin: auto;
+  margin-top: 150px;
+  width: 50%;
+  padding: 10px;
 }
