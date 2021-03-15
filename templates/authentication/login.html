@@ -13,9 +13,6 @@
         <h4>Login to your account</h4>
       </div>  
         
-
-
-
         <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
         {% include 'messages.html' %}

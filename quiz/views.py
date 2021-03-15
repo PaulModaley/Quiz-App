@@ -27,19 +27,19 @@ def take_quiz(request, pk):
         return render(request, 'quiz.html', context)
     
     if request.method == 'POST':
-        wrong_answers = []
+        correct_user_answers = []
         user_answer = request.POST['option']
         correct_answer = request.POST.get('answerLabel')
         print('correct answer ',correct_answer)
         print('user answer: ', user_answer)
         if user_answer == correct_answer:
+            correct_user_answers.append(user_answer)
             messages.success(request, 'Correct answer')
             return HttpResponseRedirect(request.session['previous_page'])
         else:
-            wrong_answers.append(user_answer)
             messages.warning(request, f'Wrong answer, Correct Answer is {correct_answer}')
             return HttpResponseRedirect(request.session['previous_page'])
-        # return render(request, 'quiz.html', context)
+
 
 @login_required(login_url='/login/')
 def result_page(request):

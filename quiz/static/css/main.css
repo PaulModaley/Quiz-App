@@ -20,3 +20,7 @@
 .showPasswordToggle:hover {
   transform: scale(1.2);
 }
+
+.login-url {
+  margin-top: 20px;
+}

@@ -113,6 +113,11 @@ body {
     }
 } */
 
+body {
+  overflow: hidden; 
+  background-color: #E8E8E8;
+}
+
 .time-container {
   font-family: "Segoe UI", Arial, sans-serif;
   text-align: right;
@@ -144,4 +149,41 @@ body {
   margin-top: 150px;
   width: 50%;
   padding: 10px;
+}
+
+#section1 {
+  height: 100vh;
+  
+}
+
+#section2 {
+  height: 100vh;
+}
+
+.show-result-btn {
+  float: right;
+}
+
+#index-section1{
+  height: 100vh;
+}
+
+#index-section2{
+  height: 100vh;
+}
+
+.categoryButton {
+  margin-top: 100px;
+  margin-left: 40%;
+  width:20%;
+}
+
+.indexStartButton {
+  margin-left: 40%;
+  width:20%;
+}
+
+.instructions{
+  margin: 0;
+  padding: 0;
 }

@@ -1,10 +1,9 @@
 {% extends 'base.html' %} 
 {% load static %}
 {% block content %} 
-  {% comment %} <div class="time-container">
-  <h5 class="time-title">Time Taken </h5>
-  <input type="text" readonly id="timespent" value="0:00">
-  </div> {% endcomment %}
+
+<div id="section1">
+
 <div class="container mt-5 pt-5">
 {% for question in page_obj %}
 <form action="" method="post">
@@ -42,27 +41,66 @@
   </div>
 {% endfor %}
 
+<div class="container">
+  <div class="pagination-btns">
+    <ol class="pagination align-right mr-auto">
+    {% if page_obj.has_next %}
+      <li class="page-item">
+        <a id="next-btn" class="page-link btn btn-success" href="?page={{ page_obj.next_page_number }}" id="next-button" >Next</a>
+      </li>
+      {% endif %}
+        <li class="page-item">
+          <input type="button" class="btn btn-danger" id="finish-btn" value="Finish">
+        </li>
+          <a href="#section2" class="btn btn-success show-result-btn ml-auto" id="show-result-btn">Show Results</a>
+          {% comment %} <input type="button" name="" id="dummy" value="dummy button"> {% endcomment %}
+    </ol>
+Question {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+{% comment %} <input type="text" id="totalScore"> {% endcomment %}
+</div>
+</div>
+</div>
+
+
+<div  id="section2">
+<div class="card text-white bg-secondary mb-3 quizresults">
+    <div class="card-header"><h3>Results</h3></div>
+    <div class="card-body">
     <div class="container">
-      <div class="pagination-btns">
-        <ol class="pagination align-right mr-auto">
-        {% if page_obj.has_next %}
-          <li class="page-item">
-            <a id="next-btn" class="page-link btn btn-success" href="?page={{ page_obj.next_page_number }}" id="next-button" >Next</a>
-          </li>
-          {% endif %}
-            <li class="page-item">
-              {% comment %} <input type="submit" href="{% url 'result_page' %}" class="btn btn-danger" id="finish-btn" value="Finish"> {% endcomment %}
-              <a href="{% url 'result_page' %}" class="btn btn-danger" id="finish-btn">Finish</a>
-            </li>
-        </ol>
-    Question {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+    <div class="row">
+      <h6 class="card-title col-3">Quiz Category</h6>
+      {% for question in page_obj %}
+      <h6 class="card-title col-8">{{question.choice}} </h6>
+      {% endfor %}
+    </div>
+    </div>
+    <hr>
+      <p class="card-text">
+      <div class="container">
+      <div class="row">
+        <div class="col-3">Total Score</div>
+        <div class="col-8">#Total score</div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-3">Start Time</div>
+        <div class="col-8" id="displayStartTime">
+        <input type="text" size="58" id="startTimeField" readonly="true">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-3">End Time</div>
+        <div class="col-8" id="displayEndTime">
+        <input type="text" size="58" id="endTimeField" readonly="true">
+        </div>
+      </div>
+      <hr>
+      </div>
+      </p>
     </div>
   </div>
-
-
-
-
-
+</div>
 {% endblock content %}
 
 
