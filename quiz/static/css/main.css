@@ -24,3 +24,9 @@
 .login-url {
   margin-top: 20px;
 }
+
+
+.registration-body{
+  overflow: hidden;
+  background-color: #e8e8e8;
+}
