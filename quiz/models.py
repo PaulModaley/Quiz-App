@@ -23,9 +23,3 @@ class Question(models.Model):
 
     def __str__(self):
         return self.question
-
-
-# class UserAnswers(models.Model):
-#     score
-#     total_questions
-#     user_answers

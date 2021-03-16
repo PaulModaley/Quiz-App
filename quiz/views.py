@@ -39,9 +39,3 @@ def take_quiz(request, pk):
         else:
             messages.warning(request, f'Wrong answer, Correct Answer is {correct_answer}')
             return HttpResponseRedirect(request.session['previous_page'])
-
-
-@login_required(login_url='/login/')
-def result_page(request):
-    return render(request, 'result.html')
-
