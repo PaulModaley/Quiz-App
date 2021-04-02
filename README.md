@@ -7,6 +7,7 @@
 - Choose quiz category
 - Shows quiz time taken
 
+![image](https://user-images.githubusercontent.com/62532677/113384597-06076680-93a4-11eb-88be-48cff27ba07f.png)
 
 
 ## Installation
