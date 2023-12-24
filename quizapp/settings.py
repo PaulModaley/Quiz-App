@@ -142,4 +142,8 @@ MESSAGE_TAGS = {
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 django_heroku.settings(locals())
 
-CSRF_TRUSTED_ORIGINS = ['https://*.mydomain.com','https://*.127.0.0.1']
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.mydomain.com',
+    'https://*.127.0.0.1',
+    'https://8000-paulmodaley-quizapp-v85j5g33fep.ws-eu107.gitpod.io',
+]
