@@ -30,3 +30,16 @@
   overflow: hidden;
   background-color: #e8e8e8;
 }
+
+/* Navbar styling */
+
+.navbar {
+  background-color: black;
+}
+
+/* button styling */
+
+#start-btn {
+  background-color: #004f5d;
+  border: #004f5d;
+}
